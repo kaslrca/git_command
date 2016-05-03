@@ -8,3 +8,5 @@ git config --global alias.sl \!"f()  { git --no-pager  shortlog -n -e --format=\
 
 ### 查看danling物件
 git fsck | grep dangling | awk '{print $3}' | xargs -n 1 -p git cat-file -p
+
+git fsck --unreachable | grep commit | cut -d ' '  -f 3 | xargs git --no-pager log --merges --no-walk  
